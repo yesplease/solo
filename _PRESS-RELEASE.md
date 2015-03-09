@@ -17,28 +17,28 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Yoga Themes
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > A solution for busy modern day yoga teachers to quickly find relevant class themes based on inspirational quotes 
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > Yoga Themes is a fast and reliable quote finder. By clicking on a few predetermined themes or entering their own, users can gain quick access to an inspirational quote, including attribution and historical data, that they can use to open their yoga classes with grace and poise. 
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > Finding an inspirational quote on a given theme is a tedious and manual process that every good yoga teacher must go through every time they teach a class. Yoga Themes is a one-stop shop for fiding the perfect quote for any given themed class.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > Totally stuck? Yoga Themes has a few themes suggested at the forefront, such as gratitude and service. Have more of an idea of what you'd like to teach your class on? Yoga Themes allows you to input keywords to find a quote on that topic.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > Yoga themes will totally transform how the most innovative and inspirational yoga teachers find the quotes they use in their classes. 
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Getting started is free and easy. Merely navigate to my URL to get started.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > "OMG I love Yoga Themes so much!! I used to waste precious time of my life scouring the internet for a great inspirational quote, but now it's so easy!!""
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Navigate to my URL to get started today!
