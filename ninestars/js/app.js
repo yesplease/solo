@@ -18,11 +18,11 @@ $( document ).ready(function() {
 
 
 var updateHeadline = function(headline, author){
-  // $( 'h1').text(headline);
+  $( 'h1').text(headline);
   $( '#author').text(author);
-  $( '#intro' ).find('h1').replaceWith(function() {
-    return '<h2>' + $(this).text() + '</h2>';
-  });
+  // $( '#intro' ).find('h1').replaceWith(function() {
+  //   return '<h2>' + $(this).text() + '</h2>';
+  
 
 };
 
