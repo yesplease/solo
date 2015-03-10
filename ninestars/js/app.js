@@ -26,6 +26,31 @@ var updateHeadline = function(headline, author){
 
 };
 
+var getPhotos = function(){
+
+};
+
+var getImage = function(theme){
+  $.ajax({
+    // url: 'https://api.instagram.com/v1/tags/'+ theme + '/media/recent?client_id=b814260d034a475085104fe3f223f7d7&callback=?',
+    url: 'https://api.instagram.com/v1/media/popular?client_id=b814260d034a475085104fe3f223f7d7',
+    type: 'GET',
+    contentType: 'JSONP',
+    crossDomain: true,
+    success: function(data) {
+      console.log("This my data!", data);
+    },
+    error: function(data){
+      console.log("This is your error: ", data);
+    }
+  });  
+};
+
+var great = function(data){
+  console.log(data);
+}
+
+
 var getQuotes = function(theme){
   $.ajax({
     url: 'https://www.googleapis.com/freebase/v1/mqlread?query=[{ "/people/person/quotations": [{ "type": "/media_common/quotation", "id": null, "name": [], "subjects": "'+ theme + '", "author": [] }] }]',
