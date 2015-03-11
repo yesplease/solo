@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QuoteGen</title>
+
+  <!-- dependencies -->
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"></script>
+  
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+  <!-- my scripts -->
+  <script type="text/javascript">
+ 
+  </script>
+</head>
+ <body>
+    <script>
+    var theme = "";
+    $( document ).ready(function() {
+      
+      $( '.theme' ).click(function(){
+        console.log("You clicked a theme! The topic is: " + event.target.id)
+        theme = event.target.id;
+        getQuotes(theme);
+      });
+
+
+
+ 
+});
+    // var envelope = {
+     
+    //     type: "/media_common/quotation",
+    //     name: [],
+    //     subjects: theme,
+    //     author: []
+      
+    // };
+
+
+    var getQuotes = function(theme){
+
+        $.ajax({
+          url: 'https://www.googleapis.com/freebase/v1/mqlread?query=[{ "/people/person/quotations": [{ "type": "/media_common/quotation", "id": null, "limit": 2000, "name": [], "subjects": "'+ theme + '", "author": [] }] }]',
+          // url: 'https://www.googleapis.com/freebase/v1/mqlread',
+          type: 'GET',
+          contentType: 'JSONP',
+          crossDomain: true,
+          // data: JSON.stringify(envelope),
+          success: function(data) {
+            console.log("you got this many results: ", data);
+            var randomAuthor = data.result[Math.floor(Math.random()*data.result.length)]['/people/person/quotations'];
+            // console.log("these are all the quotes from an author: ", randomAuthor);
+            var singleQuote = randomAuthor[Math.floor(Math.random()*randomAuthor.length)];
+            console.log("Single quote: ", singleQuote.name[0]);
+            var quoteText = singleQuote.name[0];
+            var author = singleQuote.author[0];
+            console.log("This is the author!", author);
+          },
+          error: function(data){
+            console.log("This is your error: ", data);
+          }
+        });
+
+        var output = $("#output");                          // Output goes here
+            output.html("<h1>Quotes about " + theme + "</h1>");     // Display a title
+
+            // Invoke mqlread and call the function below when it is done.
+            // Adding callback=? to the URL makes jQuery do JSONP instead of XHR.
+           // console.log("Calling the getJSON thing")
+           //  jQuery.getJSON("http://api.freebase.com/api/service/mqlread?callback=?",
+           //     {query: JSON.stringify(envelope)},   // URL parameters
+           //     displayResults);                     // Callback function
+
+        var displayResults = function(response){
+          console.log("Hitting the display results callback!");
+          if (response.code == "/api/status/ok" &&        
+                 response.result ) { // Check for success...
+            console.log("This is the response", response.result);
+              //   var list = $("<ul>");                       // Make <ul> tag.
+              //   output.append(list.hide())                  // Keep it hidden
+              //   var albums = response.result.album;         // Get albums.
+              //   jQuery.each(albums, function() {            // Loop through albums.
+              // list.append($("<li>").html(this.name)); // Make <li> for each.
+              //   });
+              //   list.show("normal");                        // Reveal the list
+            }
+            else {                                          // On failure...
+                console.log("Error for some reason");
+                // output.append("Unknown band: " + band);     // Display message.
+            }
+        }    
+
+
+      // $.ajax({
+      //     url: "https://www.googleapis.com/freebase/v1/search",
+      //     type: 'GET',
+      //     dataType: 'application/json',
+      //     data: JSON.stringify({
+      //         query: [{ "/people/person/quotations": [{ "type": "/media_common/quotation", "id": null, "name": [], "subjects": "love", "author": [] }] }]
+      //     }),
+      //     success: function( data ) {
+      //         console.log("data of the response: ", data);
+      //         // response( $.map( data.result, function( item ) {
+      //         // response( $.map( data.result, function( item ) {
+      //             // return {
+      //             //     label: item.name,
+      //             //     value: item.name
+      //             // }
+      //         // }));
+      //     }
+      // });
+    }
+      // $(function(){
+      //   app.init();
+      // });
+    </script>    <div id="main">
+      <h1>Quote Generator</h1>
+      <!-- Your HTML goes here! -->
+
+      <div class = "topics">
+        I want to teach a class about:<br>
+        <button class="theme" id='gratitude'>Gratitude</button><br>
+        <button class="theme" id='love'>Love</button><br>
+        <button class="theme" id='service'>Service</button><br>
+      <br>
+      Or my own theme:
+      <form action="#" id="send" method="post">
+        <input type="text" name="message" id="message"/>
+        <input type="submit" name="submit" class="submit"/>
+      </form>
+      </div>
+  </body>
+</html>

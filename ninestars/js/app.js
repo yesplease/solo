@@ -13,30 +13,25 @@ $( document ).ready(function() {
     console.log("New theme: ", newTheme)
     $( '#gogo' ).val("");
     getQuotes(newTheme);
+
   });
 });
-
 
 var updateHeadline = function(headline, author){
   $( 'h1').text(headline);
   $( '#author').text(author);
   // $( '#intro' ).find('h1').replaceWith(function() {
   //   return '<h2>' + $(this).text() + '</h2>';
-  
-
-};
-
-var getPhotos = function(){
-
 };
 
 var getImage = function(theme){
   $.ajax({
     // url: 'https://api.instagram.com/v1/tags/'+ theme + '/media/recent?client_id=b814260d034a475085104fe3f223f7d7&callback=?',
-    url: 'https://api.instagram.com/v1/media/popular?client_id=b814260d034a475085104fe3f223f7d7',
+    url: 'http://localhost:3000/change',
     type: 'GET',
-    contentType: 'JSONP',
-    crossDomain: true,
+    data: 'https://api.instagram.com/v1/tags/'+ theme + '/media/recent?client_id=b814260d034a475085104fe3f223f7d7',
+    //jasonify it before it over
+    contentType: 'JSON',
     success: function(data) {
       console.log("This my data!", data);
     },
@@ -45,11 +40,6 @@ var getImage = function(theme){
     }
   });  
 };
-
-var great = function(data){
-  console.log(data);
-}
-
 
 var getQuotes = function(theme){
   $.ajax({
